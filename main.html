@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Jornada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="totais">
+    <div>Horas extras: <span id="extra">0h00min</span></div>
+    <div>Folga: R$ <span id="folga">0,00</span></div>
+    <div>Feriado/Domingo: R$ <span id="fd">0,00</span></div>
+    <div>TOTAL: R$ <span id="total">0,00</span></div>
+</div>
+
+<div class="legenda">
+    <div class="legenda-item"><span class="circulo folga"></span> Folga</div>
+    <div class="legenda-item"><span class="circulo feriado"></span> Feriado</div>
+    <div class="legenda-item"><span class="circulo domingo"></span> Domingo</div>
+</div>
+
+<div class="dias-container" id="dias-container"></div>
+
+<button class="btn-flutuante" onclick="criarNovoDia()">+</button>
+
+
+<button id="btnBackup">Backup</button>
+<input type="file" id="inputRestore" accept=".json">
+
+<script src="backup.js"></script>
+
+<div class="modal" id="modal-edicao">
+    <div class="modal-conteudo">
+        <div class="modal-titulo">Dia <span id="modal-numero"></span></div>
+
+        <div class="campo">
+            <label>Tipo do Dia</label>
+            <select id="tipo-dia">
+                <option value="domingo">Domingo</option>
+                <option value="feriado">Feriado</option>
+                <option value="folga">Folga</option>
+                <option value="normal">Dia Normal</option>
+                <option value="atestado">Atestado</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Trabalhou?</label>
+            <select id="trabalhou" onchange="mostrarCamposEspecificos()">
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+        </div>
+
+        <div class="campo" id="campo-entrada">
+            <label>Entrada</label>
+            <input type="text" id="entrada" maxlength="5">
+        </div>
+
+        <div class="campo" id="campo-saida">
+            <label>Saída</label>
+            <input type="text" id="saida" maxlength="5">
+        </div>
+
+        <div class="campo" id="campo-almoco">
+            <label>Almoço</label>
+            <select id="almoco">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+        </div>
+
+        <div class="campo" id="campo-valor">
+            <label>Valor</label>
+            <input type="number" id="valor">
+        </div>
+
+
+
+        <div class="campo" id="campo-ac">
+            <label>Ajuda de Custo</label>
+            <input type="number" id="ac-input">
+        </div>
+
+        <button class="btn-salvar" onclick="salvarDadosDia()">Salvar</button>
+        <button class="btn-remover" onclick="removerDiaAtual()">Remover</button>
+        <button class="btn-voltar" onclick="fecharModal()">Voltar</button>
+    </div>
+</div>
+<div id="backupModal" class="backup-modal hidden">
+  <div class="backup-box">
+    <h3>Backup diário</h3>
+    <p>Deseja salvar um backup de hoje?</p>
+
+    <div class="backup-actions">
+      <button id="confirmBackup">Fazer backup</button>
+      <button id="cancelBackup">Depois</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="backup.js"></script>
+</body>
+</html>
