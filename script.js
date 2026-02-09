@@ -4,7 +4,7 @@
 const DIAS_SEMANA = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
 
 const SALARIO_BASE = 2240.99;
-const HORA_EXTRA_VALOR = (SALARIO_BASE / (22 * 8));
+const HORA_EXTRA_VALOR = (SALARIO_BASE / (220));
 const STORAGE_KEY = 'controle_jornada_final';
 
 // ===========================
